@@ -77,7 +77,7 @@ while True:
         if prediction[1]<100 :
           #Ponemos el nombre de la persona que se reconoció
           cv2.putText(frame,'%s - %.0f' % (cara,prediction[1]),(x-10, y-10), cv2.FONT_HERSHEY_PLAIN,1,(0, 255, 0))
-
+          print("Se ha reconocido a " + cara + " con una prediccion de " + str(prediction[1]))
           #En caso de que la cara sea de algun conocido se realizara determinadas accione          
           #Busca si los nombres de las personas reconocidas estan dentro de los que tienen acceso          
           #flabs.TuSiTuNo(cara)
