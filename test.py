@@ -16,9 +16,10 @@ while True:
     pil_im.save(stream, format="JPEG")
     stream.seek(0)
     img_for_post = stream.read()    
+    headers = {'Content-type': 'image/jpeg'} 
     files = {'image': img_for_post}
     response = requests.get(
-         url='http://localhost:8080/reconocer',files=files)
+         url='http://localhost:8080/reconocer', headers = headers, files=files)
 
 cap.release()
 cv2.destroyAllWindows()
