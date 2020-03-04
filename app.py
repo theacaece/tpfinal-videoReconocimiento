@@ -10,7 +10,7 @@ import time
 import requests
 from PIL import Image
 from six import StringIO
-
+import io
 from matplotlib import pyplot
 
 
@@ -24,9 +24,9 @@ def start():
     # Obtenemos las imagenes del feed de videoclo pa
     while True:
         #leemos un frame y lo guardamos
-        rval, img = cap.read()
+        rval, imgraw = cap.read()
         # print("Read and image, result : " + str(rval))
-        img = cv2.flip(img, 1, 0)
+        img = cv2.flip(imgraw, 1, 0)
     
         #convertimos la imagen a blanco y negro
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
@@ -40,6 +40,7 @@ def start():
         faces = sorted(faces, key=lambda x: x[3])
         
         if faces:
+            print("Se detecto una cara")
             face_i = faces[0]
             (x, y, w, h) = [v * size for v in face_i]
             face = gray[y:y + h, x:x + w]
@@ -49,7 +50,14 @@ def start():
             cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 3)
     
             # TODO: invocar backend para determinar la identidad de la persona
-            r = requests.post("http://localhost:8080/reconocer", data=img.tobytes())
+            pil_im = Image.fromarray(imgraw)
+            stream = io.BytesIO()
+            pil_im.save(stream, format="JPEG")
+            stream.seek(0)
+            with open("ultima_cara",'wb') as out: ## Open temporary file as bytes
+              out.write(stream.read())
+            stream.seek(0)
+            r = requests.post("http://localhost:8080/reconocer", data=stream.read())
             print("status code: " + str(r.status_code))
             # Determinar el nombre de la persona y etiquetar en el feed
             nombre = "persona"
