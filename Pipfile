@@ -1,0 +1,22 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+request = "*"
+requests = "*"
+flask = "==1.1.1"
+pillow = "*"
+imutils = "*"
+ipython = "*"
+matplotlib = "*"
+pycairo = "*"
+pyqt5 = "*"
+opencv-contrib-python = "*"
+opencv-python = "*"
+
+[requires]
+python_version = "3.6"

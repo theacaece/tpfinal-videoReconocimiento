@@ -48,3 +48,11 @@ python reconocimiento.py
 - Puedes cambiar el metodo de reconocimiento por caulquiera de los 3 mencionados al inicio, prueba los 3 y checa cual te da mejores resultados.
 
 <img src="https://github.com/futurelabmx/FaceRecognition2/blob/master/reconocido.png" width="600">
+
+
+Ubuntu:
+
+Para la corrección de los problemas de instalación en ubuntu, seguir la siguiente guía (referencia : https://stackoverflow.com/questions/46449850/how-to-fix-the-error-qobjectmovetothread-in-opencv-in-python)
+
+sudo pip uninstall opencv-python
+sudo apt-get install libopencv-dev python-opencv
