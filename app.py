@@ -26,7 +26,7 @@ def start():
     img_width, img_height = 112, 92
 
     # Obtenemos las imagenes del feed de videoclo pa
-    while count < 3 :
+    while count < 1 :
         # leemos un frame y lo guardamos
         rval, imgraw = cap.read()
         # print("Read and image, result : " + str(rval))
