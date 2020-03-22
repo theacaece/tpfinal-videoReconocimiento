@@ -26,7 +26,7 @@ def start():
     img_width, img_height = 112, 92
 
     # Obtenemos las imagenes del feed de videoclo pa
-    while count < 1 :
+    while count < 1:
         # leemos un frame y lo guardamos
         rval, imgraw = cap.read()
         # print("Read and image, result : " + str(rval))
@@ -54,14 +54,14 @@ def start():
             #cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 3)
 
             # TODO: invocar backend para determinar la identidad de la persona
-            pil_im = Image.fromarray(imgraw)
+            pil_im = Image.fromarray(img)
             stream = io.BytesIO()
             pil_im.save(stream, format="JPEG")
             stream.seek(0)
             with open("Cara{}.jpeg".format(count), 'wb') as out:  ## Open temporary file as bytes
                 out.write(stream.read())
             stream.seek(0)
-            r = requests.post("http://localhost:8080/reconocer", data=stream.read())
+            r = requests.post("http://localhost:8080/reconocer", data=stream.read(), headers={'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmZmVycmFyaSIsImV4cCI6MTU4NDg1MTIzMiwiaWF0IjoxNTg0ODMzMjMyLCJhdXRob3JpdGllcyI6W119._GFHuS9HnGa7PFQYA1WN7pMDd9RC_uCWCEd1HWS2T8yddq2IPRSlNB-Tx4kVBg6N_FMKrAgJ4kq27ZSVNdKDOQ'})
             print("status code: " + str(r.status_code))
             # Determinar el nombre de la persona y etiquetar en el feed
             nombre = "persona"
