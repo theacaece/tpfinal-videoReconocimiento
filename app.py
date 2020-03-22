@@ -23,6 +23,8 @@ def start():
     # Contador
     count = 0
 
+    token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmZmVycmFyaSIsImV4cCI6MTU4NDkyNTQyOCwiaWF0IjoxNTg0OTA3NDI4LCJhdXRob3JpdGllcyI6W119.XocwPcCsn69kdV1xy4nPMG6HT9BNJpYdonG0Orj8GubtGDOHcP5mE8E2Rx8gc-s_UAb_OFz0SMqDK2NmWt-_OA'
+
     img_width, img_height = 112, 92
 
     # Obtenemos las imagenes del feed de videoclo pa
@@ -61,7 +63,7 @@ def start():
             with open("Cara{}.jpeg".format(count), 'wb') as out:  ## Open temporary file as bytes
                 out.write(stream.read())
             stream.seek(0)
-            r = requests.post("http://localhost:8080/reconocer", data=stream.read(), headers={'Authorization': 'Bearer ' + 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmZmVycmFyaSIsImV4cCI6MTU4NDg1MTIzMiwiaWF0IjoxNTg0ODMzMjMyLCJhdXRob3JpdGllcyI6W119._GFHuS9HnGa7PFQYA1WN7pMDd9RC_uCWCEd1HWS2T8yddq2IPRSlNB-Tx4kVBg6N_FMKrAgJ4kq27ZSVNdKDOQ'})
+            r = requests.post("http://localhost:8080/reconocer", data=stream.read(), headers={'Authorization': 'Bearer ' + token})
             print("status code: " + str(r.status_code))
             # Determinar el nombre de la persona y etiquetar en el feed
             nombre = "persona"
