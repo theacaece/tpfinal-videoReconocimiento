@@ -23,7 +23,7 @@ def start():
     # Contador
     count = 0
 
-    token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmZmVycmFyaSIsImV4cCI6MTU4NDkzNTk4MCwiaWF0IjoxNTg0OTE3OTgwLCJhdXRob3JpdGllcyI6W119.tIkPOrNM7CEOxb9OKkVtRmTzQIEJBv27SgVI-mopYis5M2UD3tcCX5YIMqbUXwtb9yiZNZ4Cqtoe1aOF3nQMLA'
+    token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmZmVycmFyaSIsImV4cCI6MTU4NTAxNzA0MiwiaWF0IjoxNTg0OTk5MDQyLCJhdXRob3JpdGllcyI6W119.-Fdtkbrh3zxH75W5jDh5XQUnlkdvEeY605eu7Oob9kdNEqVdEItm2xpIIbn1oe9x8fYyZTe1_C_hoEkiR9pyfQ'
 
     img_width, img_height = 112, 92
 
