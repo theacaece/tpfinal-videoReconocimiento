@@ -28,12 +28,11 @@ def start():
     img_width, img_height = 112, 92
 
     # Obtenemos las imagenes del feed de videoclo pa
-    while count < 3:
+    while count < 10:
         # leemos un frame y lo guardamos
         rval, imgraw = cap.read()
         # print("Read and image, result : " + str(rval))
         img = cv2.flip(imgraw, 1, 0)
-        cv2.imwrite("Cara{}.jpeg".format(count), img=img)
         # convertimos la imagen a blanco y negro
         gray = cv2.cvtColor(imgraw, cv2.COLOR_BGR2GRAY)
 
