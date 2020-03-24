@@ -23,19 +23,19 @@ def start():
     # Contador
     count = 0
 
-    token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmZmVycmFyaSIsImV4cCI6MTU4NTAxNzA0MiwiaWF0IjoxNTg0OTk5MDQyLCJhdXRob3JpdGllcyI6W119.-Fdtkbrh3zxH75W5jDh5XQUnlkdvEeY605eu7Oob9kdNEqVdEItm2xpIIbn1oe9x8fYyZTe1_C_hoEkiR9pyfQ'
+    token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYmF2YSIsImV4cCI6MTU4NTA5NTA3NSwiaWF0IjoxNTg1MDc3MDc1LCJhdXRob3JpdGllcyI6W119.KCWjaLozD4aYLsQpJLGNXbbwTt23nkEHl_D60I0A1jsys42PttrMK12hYzBq21tQ7LNTIRoR4PO7yf7Z20tEjw'
 
     img_width, img_height = 112, 92
 
     # Obtenemos las imagenes del feed de videoclo pa
-    while count < 1:
+    while count < 3:
         # leemos un frame y lo guardamos
         rval, imgraw = cap.read()
         # print("Read and image, result : " + str(rval))
         img = cv2.flip(imgraw, 1, 0)
-
+        cv2.imwrite("Cara{}.jpeg".format(count), img=img)
         # convertimos la imagen a blanco y negro
-        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        gray = cv2.cvtColor(imgraw, cv2.COLOR_BGR2GRAY)
 
         # redimensionar la imagen
         mini = cv2.resize(gray, (int(gray.shape[1] / size), int(gray.shape[0] / size)))
@@ -56,14 +56,11 @@ def start():
             #cv2.rectangle(img, (x, y), (x + w, y + h), (0, 255, 0), 3)
 
             # TODO: invocar backend para determinar la identidad de la persona
-            pil_im = Image.fromarray(img)
+            cv2.imwrite("Cara{}.jpg".format(count), img=img)
             stream = io.BytesIO()
-            pil_im.save(stream, format="JPEG")
+            data = open("Cara{}.jpg".format(count), 'rb').read()
             stream.seek(0)
-            with open("Cara{}.jpeg".format(count), 'wb') as out:  ## Open temporary file as bytes
-                out.write(stream.read())
-            stream.seek(0)
-            r = requests.post("http://localhost:8080/reconocer", data=stream.read(), headers={'Authorization': 'Bearer ' + token})
+            r = requests.post("http://localhost:8080/reconocer", data=data, headers={'Authorization': 'Bearer ' + token})
             print("status code: " + str(r.status_code))
             # Determinar el nombre de la persona y etiquetar en el feed
             nombre = "persona"
