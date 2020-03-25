@@ -1,3 +1,11 @@
+# Requerimientos
+- Python
+- Pip
+
+Ejecutar en la carpeta donde se encuentra clonado el repo:
+pip3 freeze >> requirements.txt
+pip3 install -r requirements.txt
+
 Ejecutar python3-rest.py para comenzar con la captura de imagenes.
 
 En app.py es donde se capturan las imagenes y se envian al backend. Actualizar el token obteniendolo desde el backend cada vez que iniciemos el sistema.
