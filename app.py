@@ -13,8 +13,9 @@ from six import StringIO
 import io
 from matplotlib import pyplot
 
+token = sys.argv[1]
 
-def start():
+def start(token):
     # Tamanio para reducir a miniaturas las fotografias
     size = 4
     # cargamos la plantilla e inicializamos la webcam
@@ -22,8 +23,6 @@ def start():
     cap = cv2.VideoCapture(0)
     # Contador
     count = 0
-
-    token = sys.argv[1]
 
     img_width, img_height = 112, 92
 

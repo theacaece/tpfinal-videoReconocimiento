@@ -5,14 +5,16 @@ from flask import request
 from flask import jsonify
 from app import start
 from flask_cors import CORS, cross_origin
+import sys
 
 app = Flask(__name__)
 CORS(app)
 
+token = sys.argv[1]
 
 @app.route("/captura",methods=['POST'])
 def entrenamiento_service():
-    start()
+    start(token)
     result = "Envio de imagen: OK"
     print(result)
     return jsonify(result)
