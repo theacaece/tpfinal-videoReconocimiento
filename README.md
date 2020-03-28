@@ -15,6 +15,6 @@ pip3 install -r requirements.txt
 
 Para invocar directamente a la captura de imagenes, se debe ejecutar app.py, ahi es donde se capturan las imagenes y se envian al backend. 
 
-La cantidad de imagenes a enviar se determinan por el valor que se define en el ciclo While a la variable coun.t.
+La cantidad de imagenes a enviar se determinan por el valor que se define en el ciclo While a la variable count.
 
 Unicamente se envian imagenes de cuando se detecta una cara enfrente a la camara.
