@@ -23,7 +23,7 @@ def start():
     # Contador
     count = 0
 
-    token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJtYmF2YSIsImV4cCI6MTU4NTA5NTA3NSwiaWF0IjoxNTg1MDc3MDc1LCJhdXRob3JpdGllcyI6W119.KCWjaLozD4aYLsQpJLGNXbbwTt23nkEHl_D60I0A1jsys42PttrMK12hYzBq21tQ7LNTIRoR4PO7yf7Z20tEjw'
+    token = sys.argv[1]
 
     img_width, img_height = 112, 92
 
