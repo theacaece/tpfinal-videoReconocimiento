@@ -18,3 +18,7 @@ Para invocar directamente a la captura de imagenes, se debe ejecutar app.py, ahi
 La cantidad de imagenes a enviar se determinan por el valor que se define en el ciclo While a la variable count.
 
 Unicamente se envian imagenes de cuando se detecta una cara enfrente a la camara.
+
+# Envio de imagenes - THEA
+
+Para enviar imagenes a la carpeta train de imagenReconocimiento, ejecutar python sendImage.py
