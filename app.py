@@ -81,4 +81,4 @@ def start(token):
 
 
 if __name__ == '__main__':
-    start()
+    start(token)
