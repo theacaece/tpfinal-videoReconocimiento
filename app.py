@@ -25,9 +25,10 @@ def start(token):
     count = 0
 
     img_width, img_height = 112, 92
-
+    i = 0
     # Obtenemos las imagenes del feed de videoclo pa
-    while count < 3:
+    while count < 3 and i < 301:
+        i = i+1
         # leemos un frame y lo guardamos
         rval, imgraw = cap.read()
         # print("Read and image, result : " + str(rval))
@@ -42,6 +43,9 @@ def start(token):
        guardamos su posicion"""
         faces = face_cascade.detectMultiScale(mini)
         faces = sorted(faces, key=lambda x: x[3])
+
+        if (i == 300):
+            sys.exit()
 
         if faces:
             print("Se detecto una cara")
